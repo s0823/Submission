@@ -508,9 +508,8 @@ def main():
                 
                 # Combined loss with identity loss
                 if args.facenet:
-                    #identity_loss = F.relu(args.facenet_threshold - face_distance) #max(0, args.facenet_threshold - face_distance)
                     identity_loss = torch.exp(face_distance * -1.0) #exp(-face_distance)
-                    loss = identity_loss+reg*0.5 +att_diff #+ mask_diff*5.0 #with facenet
+                    loss = identity_loss+reg*0.5 +att_diff + mask_diff #with facenet
                 else:
                     identity_loss =face_distance
                     loss = att_diff * 0.5 + identity_loss + reg * 1.0 + mask_diff #with magface
@@ -526,15 +525,14 @@ def main():
                 loss_value=loss.item()
                 loss.backward()
                 optimizer.step()
-                
-                #print(f"Loss: {loss.item():.4f}, FaceNet: {face_distance.item():.4f}, Non-face: {non_face_diff:.4f}, Face: {face_diff:.4f}, Att: {att_diff:.4f}")
+
                 if args.facenet:
                     print(f"Loss: {loss.item():.4f}, FaceNet: {face_distance.item():.4f}, Reg: {reg:.4f}, Att: {att_diff:.4f}")#, Mask: {mask_diff:.4f}") #with facenet
                 else:
-                    print(f"Loss: {loss.item():.4f}, FaceNet: {face_distance:.4f}, Reg: {reg:.4f}, Att: {att_diff:.4f}") #with magface
+                    print(f"Loss: {loss.item():.4f}, FaceNet: {face_distance.item():.4f}, Reg: {reg:.4f}, Att: {att_diff:.4f}") #with magface
             
             #save the best image
-            #tvu.save_image((best_image + 1) * 0.5, os.path.join(args.exp, 'best',name+ '.png'))
+            #tvu.save_image((best_image.detach().clone() + 1) * 0.5, os.path.join(args.exp, 'best',name+ '.png'))
             
             #save the final step's image
             tvu.save_image((denoised.detach().clone() + 1) * 0.5, os.path.join(args.exp, name+ '.png'))
