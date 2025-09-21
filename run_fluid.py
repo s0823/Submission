@@ -501,7 +501,7 @@ def main():
 
                 # 2. Compute KL(P‖Q)
                 att_diff = F.kl_div(q.log(), p, reduction='batchmean')
-                mask_diff = F.mse_loss(mask_denoised, face_mask_x0)
+                #mask_diff = F.mse_loss(mask_denoised, face_mask_x0)
                 
                 #background loss
                 reg = torch.sum(((denoised-src)**2)*inverse_mask)/(256*256)
@@ -509,10 +509,10 @@ def main():
                 # Combined loss with identity loss
                 if args.facenet:
                     identity_loss = torch.exp(face_distance * -1.0) #exp(-face_distance)
-                    loss = identity_loss+reg*0.5 +att_diff + mask_diff #with facenet
+                    loss = identity_loss+reg*0.5 +att_diff #with facenet
                 else:
                     identity_loss =face_distance
-                    loss = att_diff * 0.5 + identity_loss + reg * 1.0 + mask_diff #with magface
+                    loss = att_diff + identity_loss + reg * 0.5 #with magface
                 
                 # Combined loss but altering attributes
                 #loss = torch.exp(att_diff * -0.1) + face_diff * 0.1 + non_face_diff * 1.0  #+ torch.exp(face_distance*-1.0) #+ reg
