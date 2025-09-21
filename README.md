@@ -1,5 +1,3 @@
-This is the official implementation of FLUID (Face de-identification in the Latent space via Utility-preserving Identity Displacement).
-
 To run the code, the following model files should be prepared.
 
 1. Download model.pt from [FaceXformer](https://github.com/Kartik-3004/facexformer) and place it in facexformer/ckpts/model.pt
