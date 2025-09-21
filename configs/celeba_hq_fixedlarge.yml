@@ -1,0 +1,50 @@
+data:
+    dataset: "CELEBA_HQ"
+    image_size: 256  # You can use 64, 128, 256, 512 or even 1024 depending on your GPU memory
+    channels: 3
+    logit_transform: false
+    uniform_dequantization: false
+    gaussian_dequantization: false
+    random_flip: true
+    rescaled: true
+    num_workers: 0
+
+model:
+    type: "simple"
+    in_channels: 3
+    out_ch: 3
+    ch: 128
+    ch_mult: [1, 1, 2, 2, 2, 2]  # Modified for higher resolution
+    num_res_blocks: 2
+    attn_resolutions: [16, ]
+    dropout: 0.1
+    var_type: fixedlarge
+    ema_rate: 0.9999
+    ema: True
+    resamp_with_conv: True
+
+diffusion:
+    beta_schedule: linear
+    beta_start: 0.0001
+    beta_end: 0.02
+    num_diffusion_timesteps: 1000
+
+training:
+    batch_size: 8  # Reduced batch size due to higher resolution
+    n_epochs: 1000
+    n_iters: 5000000 #there is no explicit use of this in the code. Maybe it's about the maximum number of training steps (batches?) to process.
+    snapshot_freq: 12500
+    validation_freq: 20000
+
+sampling:
+    batch_size: 8  # Reduced for higher resolution images
+    last_only: True
+
+optim:
+    weight_decay: 0.000
+    optimizer: "Adam"
+    lr: 0.0002
+    beta1: 0.9
+    amsgrad: false
+    eps: 0.00000001
+    grad_clip: 1.0
