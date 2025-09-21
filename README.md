@@ -2,7 +2,7 @@ To run the code, the following model files should be prepared.
 
 1. Download model.pt from [FaceXformer](https://github.com/Kartik-3004/facexformer) and place it in facexformer/ckpts/model.pt
 2. Download magface_epoch_00025.pth, which is the first model in the model zoo of [MagFace](https://github.com/IrvingMeng/MagFace?tab=readme-ov-file) and place it in MagFace/ckpts/magface_epoch_00025.pth
-3. Please refer to [DiffusionCLIP](https://github.com/gwang-kim/DiffusionCLIP) or [Asyrp](https://github.com/kwonminki/Asyrp_official?tab=readme-ov-file) to download the diffusion model trained on [CelebA-HQ](https://arxiv.org/abs/1710.10196) and place it in checkpoint/celeba_hq.ckpt
+3. Please refer to [DiffusionCLIP](https://github.com/gwang-kim/DiffusionCLIP) or [Asyrp](https://github.com/kwonminki/Asyrp_official?tab=readme-ov-file) to download the diffusion model trained on [CelebA-HQ](https://arxiv.org/abs/1710.10196) , create a 'checkpoint' folder and place the ckpt model file in checkpoint/celeba_hq.ckpt
 
 
 Please install the environment with the following steps:
