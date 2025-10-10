@@ -41,4 +41,4 @@ To train your own diffusion model and use for editing, please refer to [DDIM](ht
 
 
 
-This implementation heavily relies on [Asyrp](https://github.com/kwonminki/Asyrp_official?tab=readme-ov-file), [Boundary Diffusion](https://github.com/L-YeZhu/BoundaryDiffusion), [FaceXformer](https://github.com/Kartik-3004/facexformer), and [MagFace](https://github.com/IrvingMeng/MagFace?tab=readme-ov-file).
+This implementation relies on [Asyrp](https://github.com/kwonminki/Asyrp_official?tab=readme-ov-file), [Boundary Diffusion](https://github.com/L-YeZhu/BoundaryDiffusion), [FaceXformer](https://github.com/Kartik-3004/facexformer), and [MagFace](https://github.com/IrvingMeng/MagFace?tab=readme-ov-file).
