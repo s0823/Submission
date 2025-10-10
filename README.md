@@ -5,7 +5,7 @@ To run the code, the following model files should be prepared.
 3. Please refer to [DiffusionCLIP](https://github.com/gwang-kim/DiffusionCLIP) or [Asyrp](https://github.com/kwonminki/Asyrp_official?tab=readme-ov-file) to download the diffusion model trained on [CelebA-HQ](https://arxiv.org/abs/1710.10196) , create a 'checkpoint' folder and place the ckpt model file in checkpoint/celeba_hq.ckpt
 
 
-Please install the environment with the following steps:
+With the root folder named fluid, please install the environment with the following steps:
 ```
 conda create --name fluid python=3.8
 conda activate latent
